@@ -1,10 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hans">
 <head>
   <meta charset="UTF-8">
-  <title></title>
+  <title>管理页面</title>
 </head>
 <body>
-  <script src=""></script>
+<script src="../node_modules/leancloud-storage/dist/av-min.js"></script>
+  <script>
+    // 初始化
+    var APP_ID = 'K6hrvR3gTIhGalmhmcNCDiQx-gzGzoHsz';
+    var APP_KEY = 'dp64QYILc6Vs0SvqK1V9G5Hy';
+
+    AV.init({
+      appId: APP_ID,
+      appKey: APP_KEY
+    });
+    // 创建数据库 
+    var TestObject = AV.Object.extend('Song');
+    // 创建一条记录 
+    var testObject = new TestObject();
+    // 保存记录
+    testObject.save({
+      name: 'test',
+      singer: 'test',
+      url: 'test'
+    }).then(function(object) {
+      alert('LeanCloud Rocks!');
+    })
+  </script>
 </body>
 </html>
