@@ -1,46 +1,4 @@
-<!DOCTYPE html>
-<html lang="zh-Hans">
-<head>
-  <meta charset="UTF-8">
-  <title>管理页面</title>
-</head>
-<body>
-  <style>
-    *{margin: 0; padding: 0;}
-    #yyy{
-      padding: 30px 70px;
-      border-radius: 20px;
-      width: 200px;
-      border: 2px dashed #ddd;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-    }
-  </style>
-  <!--<audio controls src="http://pmybem40s.bkt.clouddn.com/Nigel%20Silin%20-%20Sakura%20Tears.mp3"></audio>-->
-  <div id="yyy">
-    <span id= "xxx">点击或拖曳上传</span>
-    <p>文件大小不能超过10MB </p>
-  </div>
-  <div id="uploadStatus"></div>
-<script src="../node_modules/leancloud-storage/dist/av-min.js"></script>
-  <script>
-    // 初始化
-    var APP_ID = 'K6hrvR3gTIhGalmhmcNCDiQx-gzGzoHsz';
-    var APP_KEY = 'dp64QYILc6Vs0SvqK1V9G5Hy';
-
-    AV.init({
-      appId: APP_ID,
-      appKey: APP_KEY
-    });
-  </script>
-
-<script src="../vendors/moxie.js"></script>
-<script src="../node_modules/plupload/js/plupload.min.js"></script>
-<script src="../node_modules/qiniu-js/dist/qiniu.min.js"></script>
-<script>
-  var uploader = Qiniu.uploader({
+var uploader = Qiniu.uploader({
   disable_statistics_report: false,   // 禁止自动发送上传统计信息到七牛，默认允许发送
   runtimes: 'html5',      // 上传模式,依次退化
   browse_button: 'xxx',         // 上传选择的点选按钮，**必需**
@@ -48,7 +6,7 @@
   // 切如果提供了多个，其优先级为 uptoken > uptoken_url > uptoken_func
   // 其中 uptoken 是直接提供上传凭证，uptoken_url 是提供了获取上传凭证的地址，如果需要定制获取 uptoken 的过程则可以设置 uptoken_func
   // uptoken : '<Your upload token>', // uptoken 是上传凭证，由其他程序生成
-  uptoken_url: 'http://localhost:8888/uptoken',         // Ajax 请求 uptoken 的 Url，**强烈建议设置**（服务端提供）
+  uptoken_url: 'http://http://localhost:8888/uptoke',         // Ajax 请求 uptoken 的 Url，**强烈建议设置**（服务端提供）
   // uptoken_func: function(file){    // 在需要获取 uptoken 时，该方法会被调用
   //    // do something
   //    return uptoken;
@@ -88,11 +46,9 @@
       },
       'UploadProgress': function(up, file) {
              // 每个文件上传时,处理相关的事情
-        uploadStatus.textContent = '上传中' 
       },
       'FileUploaded': function(up, file, info) {
              // 每个文件上传成功后,处理相关的事情
-        uploadStatus.textContent = '上传完毕' 
              // 其中 info.response 是文件上传成功后，服务端返回的json，形式如
              // {
              //    "hash": "Fh8xVqod2MQ1mocfI4S4KpRL6D98",
@@ -105,12 +61,18 @@
              // var sourceLink = domain + res.key; 获取上传成功后的文件的Url
       },
       'Error': function(up, err, errTip) {
+             //上传出错时,处理相关的事情
       },
       'UploadComplete': function() {
              //队列文件处理完毕后,处理相关的事情
       },
+      'Key': function(up, file) {
+          // 若想在前端对每个文件的key进行个性化处理，可以配置该函数
+          // 该配置必须要在 unique_names: false , save_key: false 时才生效
+
+          var key = "";
+          // do something with key here
+          return key
+      }
     }
   });
-</script>
-</body>
-</html>

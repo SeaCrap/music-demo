@@ -5,9 +5,10 @@
   "main": "index.js",
   "dependencies": {
     "leancloud-storage": "^3.11.1",
+    "moxie": "0.0.0",
+    "plupload": "^2.3.2",
     "qiniu": "^7.2.1",
-    "qiniu-js": "^1.0.22",
-    "plupload": "^2.3.2"
+    "qiniu-js": "^1.0.22"
   },
   "devDependencies": {},
   "scripts": {
