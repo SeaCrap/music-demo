@@ -98,7 +98,7 @@
             var domain = up.getOption('domain');
             var response = JSON.parse(info.response);
             var sourceLink = domain + '/' + encodeURIComponent(response.key);             
-            uploadStatus.textContent = '歌曲外链:' + ' ' + sourceLink + ' ' + '歌曲名字:' + ' ' + response.key 
+            uploadStatus.textContent = '歌曲外链:' + ' ' + sourceLink + /n + '歌曲名字:' + ' ' + response.key 
           },
           'Error': function(up, err, errTip) {
           },
