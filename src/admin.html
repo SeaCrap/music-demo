@@ -3,26 +3,63 @@
   <head>
     <meta charset="UTF-8">
     <title>管理页面</title>
+    <link rel="stylesheet" href="../css/default.css">
   </head>
   <body>
-    <style>
-*{margin: 0; padding: 0;}
-#yyy{
-  padding: 30px 70px;
-  border-radius: 20px;
-  width: 200px;
-  border: 2px dashed #ddd;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-    </style>
-    <!--<audio controls src="http://pmybem40s.bkt.clouddn.com/Nigel%20Silin%20-%20Sakura%20Tears.mp3"></audio>-->
-    <div id="yyy">
-      <span id= "xxx">点击或拖曳上传</span>
-      <p>文件大小不能超过100MB </p>
+    
+    <div class="page">
+      <aside>
+        <div class="newSong"><h1>新建歌曲</h1></div>
+        <ul class="songList">
+          <li class="active"> 好久不见 </li>
+          <li> K歌之王 </li>
+          <li> 富士山下 </li>
+          <li> 浮夸 </li>
+          <li>  枫 </li>
+          <li> 黑色毛衣 </li>
+          <li> K歌之王 </li>
+          <li> 富士山下 </li>
+          <li> 我的底盘 </li>
+          <li> 双节棍 </li>
+        </ul>
+        </ul>
+        <div class="uploadArea">
+          <div id="uploadContainer" class="draggable">
+            <div id="uploadButton" class="clickable">
+              <p>点击或拖曳上传</p>
+              <p>文件大小不能超过100MB </p>
+            </div>
+          </div>
+        </div>
+      </aside>
+      <main>
+        <form class="form">
+          <div class="row">
+            <label for="">
+              歌名
+              <input type="text">
+            </label>
+          </div>
+          <div class="row">
+            <label for="">
+              歌手
+              <input type="text">
+            </label>
+          </div>
+          <div class="row">
+            <label for="">
+              外链
+              <input type="text">
+            </label>
+          </div>
+          <div class="row">
+            <button type="submit">保存</button>
+          </div>
+        </form>
+      </main>
     </div>
+
+    <!--<audio controls src="http://pmybem40s.bkt.clouddn.com/Nigel%20Silin%20-%20Sakura%20Tears.mp3"></audio>-->
     <div id="uploadStatus"></div>
     <script src="../node_modules/leancloud-storage/dist/av-min.js"></script>
     <script>
@@ -43,7 +80,7 @@
       var uploader = Qiniu.uploader({
         disable_statistics_report: false,   // 禁止自动发送上传统计信息到七牛，默认允许发送
         runtimes: 'html5',      // 上传模式,依次退化
-        browse_button: 'xxx',         // 上传选择的点选按钮，**必需**
+        browse_button: 'uploadButton',         // 上传选择的点选按钮，**必需**
         // 在初始化时，uptoken, uptoken_url, uptoken_func 三个参数中必须有一个被设置
         // 切如果提供了多个，其优先级为 uptoken > uptoken_url > uptoken_func
         // 其中 uptoken 是直接提供上传凭证，uptoken_url 是提供了获取上传凭证的地址，如果需要定制获取 uptoken 的过程则可以设置 uptoken_func
@@ -61,7 +98,7 @@
         domain: 'http://pmybem40s.bkt.clouddn.com',     // bucket 域名，下载资源时用到，如：'http://xxx.bkt.clouddn.com/' **必需**
         max_file_size: '40mb',             // 最大文件体积限制
         dragdrop: true,                     // 开启可拖曳上传
-        drop_element: 'yyy',          // 拖曳上传区域元素的 ID，拖曳文件或文件夹后可触发上传
+        drop_element: 'uploadContainer',          // 拖曳上传区域元素的 ID，拖曳文件或文件夹后可触发上传
         chunk_size: '4mb',                  // 分块上传时，每块的体积
         auto_start: true,                   // 选择文件后自动上传，若关闭需要自己绑定事件触发上传,
         //x_vars : {
