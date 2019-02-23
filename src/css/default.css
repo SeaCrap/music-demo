@@ -41,16 +41,18 @@ aside > .newSong{
 aside > .newSong.active{
   background: #d4d4d4;
 }
-aside > .songList{
+aside > #songList-container{
   flex-grow: 1;
+}
+aside > #songList-container > .songList{
   text-align: left;
   border-top: 1px solid #999;
 }
-aside > .songList > li{
+aside > #songList-container > .songList > li{
   border-bottom: 1px solid #ddd;
   padding: 6px;
 }
-aside > .songList > li.active{
+aside > #songList-container > .songList > li.active{
   background: #d4d4d4;
 }
 aside > .uploadArea{
