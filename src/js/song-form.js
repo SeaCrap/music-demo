@@ -7,7 +7,7 @@
     <div class="row">
     <label>
     歌名
-    <input type="text">
+    <input type="text" value="__key__">
     </label>
     </div>
     <div class="row">
@@ -19,7 +19,7 @@
     <div class="row">
     <label>
     外链
-    <input type="text">
+    <input type="text" value="__link__">
     </label>
     </div>
     <div class="row">
@@ -27,8 +27,13 @@
     </div>
     </form>
     `,
-    render(data){
-      $(this.el).html(this.template)
+    render(data = {}){ // ES6语法: 如果没有传入 data 或 data 是 undefined  就默认执行 data 为空对象
+      let placeholders = ['key', 'link']
+      let html = this.template
+      placeholders.map((string)=>{
+        html = html.replace(`__${string}__`, data[string] || '')
+      })
+      $(this.el).html(html)
     }
   }
   let model = {}
@@ -38,8 +43,7 @@
       this.model = model
       this.view.render(this.model.data)
       window.eventHub.on('upload', (data)=>{
-        console.log('song form 模块得到的 data')
-        console.log(data)
+        this.view.render(data)
       })
     },
   }

@@ -39,21 +39,21 @@ aside > .newSong{
   padding: 10px;
 }
 aside > .newSong.active{
-  background: #d4d4d4;
+  background: #F1F3F4;
 }
 aside > #songList-container{
   flex-grow: 1;
 }
 aside > #songList-container > .songList{
   text-align: left;
-  border-top: 1px solid #999;
+  border-top: 1px solid #ddd;
 }
 aside > #songList-container > .songList > li{
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #F1F3F4;
   padding: 6px;
 }
 aside > #songList-container > .songList > li.active{
-  background: #d4d4d4;
+  background: #F1F3F4;
 }
 aside > .uploadArea{
   
@@ -77,7 +77,7 @@ aside > .uploadArea{
 /* main */
 
 .page > main{
-  background: #d4d4d4;
+  background: #F1F3F4;
 }
 .page > main > .form{
   font-size: 14px;

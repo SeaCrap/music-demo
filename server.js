@@ -3,7 +3,7 @@ var fs = require('fs')
 var url = require('url')
 var qiniu = require('qiniu')
 
-var port = process.env.PORT || 8888; //bash设置端口：PORT=8001 node server.js
+var port = process.env.PORT || 8888; //bash设置端口,比如：PORT=8001 node server.js,这样就可以开启一个 8001 的端口
 
 var server = http.createServer(function(request, response){
   

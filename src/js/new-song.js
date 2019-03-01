@@ -14,12 +14,12 @@
       this.view = view
       this.model = model
       this.view.render(this.model.data)
+      this.active()
       window.eventHub.on('upload',(data)=>{
-        console.log('new song 模块得到的 data')
-        console.log(data)
+        this.active()
       })
     },
-    acrive(){
+    active(){
       $(this.view.el).addClass('active')
     }
   }
